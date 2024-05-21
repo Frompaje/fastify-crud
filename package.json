@@ -13,10 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "5.14.0",
     "fastify": "^4.27.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
+    "prisma": "5.14.0",
     "tsup": "^8.0.2",
     "tsx": "^4.10.5",
     "typescript": "^5.4.5"
