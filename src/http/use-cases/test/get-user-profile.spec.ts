@@ -1,8 +1,8 @@
 import { ResourceNotFoundError } from "@/errors/resource-not-found-error";
-import { InMemoryUserRepository } from "@/repositories/in-memory/In-memory-users-Repository";
 import { hash } from "bcryptjs";
 import { describe, expect, it } from "vitest";
 import { GetUserProfileUseCase } from "../get-user-profile";
+import { InMemoryUserRepository } from "@/repositories/in-memory/In-memory-users-repository";
 
 describe("Get User Profile Use Case", () => {
   it("should be able to authenticate", async () => {

@@ -1,8 +1,8 @@
 import { compare } from "bcryptjs";
 import { beforeEach, describe, expect, it } from "vitest";
 import { RegisterUseCase } from "../register";
-import { InMemoryUserRepository } from "@/repositories/in-memory/In-memory-users-Repository";
 import { UserAlreadyExistsError } from "@/errors/user-already-exists-error";
+import { InMemoryUserRepository } from "@/repositories/in-memory/In-memory-users-repository";
 
 describe("Register Use Case", () => {
   beforeEach(() => {});

@@ -1,8 +1,8 @@
-import { InMemoryUserRepository } from "@/repositories/in-memory/In-memory-users-Repository";
 import { hash } from "bcryptjs";
 import { describe, expect, it } from "vitest";
 import { AuthenticateUseCase } from "../authenticate";
 import { InvalidCredentialsError } from "@/errors/invalid-credentials-error";
+import { InMemoryUserRepository } from "@/repositories/in-memory/In-memory-users-repository";
 
 describe("Authentica Use Case", () => {
   it("should be able to authenticate", async () => {
