@@ -1,8 +1,7 @@
-import { prisma } from "@/lib/prisma";
+import { UserAlreadyExistsError } from "@/errors/user-already-exists-error";
+import { makeRegisterUseCacase } from "@/factories/make-register-use-case";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { hash } from "bcryptjs";
 import z from "zod";
-import { registerUseCase } from "../use-cases/register";
 
 export async function register(request: FastifyRequest, reply: FastifyReply) {
   const registerBodySchema = z.object({
@@ -14,13 +13,19 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
   const { name, email, password } = registerBodySchema.parse(request.body);
 
   try {
-    await registerUseCase({
+    const registerUseCase = makeRegisterUseCacase();
+
+    await registerUseCase.execute({
       name,
       email,
       password,
     });
   } catch (err) {
-    return reply.status(409).send();
+    if (err instanceof UserAlreadyExistsError) {
+      return reply.status(409).send({ message: err.message });
+    }
+
+    throw err;
   }
 
   reply.status(201).send();
