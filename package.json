@@ -20,6 +20,7 @@
     "zod": "3.23.8"
   },
   "devDependencies": {
+    "@faker-js/faker": "8.4.1",
     "@types/bcryptjs": "2.4.6",
     "@types/node": "^20.12.12",
     "@vitest/coverage-v8": "1.6.0",

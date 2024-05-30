@@ -11,7 +11,7 @@ interface CheckInUseCaseResponse {
 }
 
 export class CheckInUseCase {
-  constructor(public checkInsRepository: CheckInsRepository) {}
+  constructor(public readonly checkInsRepository: CheckInsRepository) {}
 
   async execute({
     userId,
