@@ -1,9 +1,7 @@
 import { UserAlreadyExistsError } from "@/errors/user-already-exists-error";
 import { Hasher, UserRepository } from "@/interface/users-repository";
-import { compare } from "bcryptjs";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { RegisterUseCase } from "../register";
-import { makeMockUser } from "./factories/make-user";
 
 describe("Register Use Case", () => {
   let userRepository: UserRepository;
@@ -22,19 +20,6 @@ describe("Register Use Case", () => {
     };
     registerUseCase = new RegisterUseCase(userRepository, hasher);
   });
-
-  // it("should hash user password upon registration", async () => {
-  //   const userCreated = makeMockUser();
-
-  //   vi.spyOn(userRepository, "findById").mockResolvedValue(userCreated);
-
-  //   const isPasswordCorrectlyHashed = await compare(
-  //     "123123",
-  //     userCreated.password_hash
-  //   );
-  // TODO: teste bd password_hash
-  //   expect(isPasswordCorrectlyHashed).toBe(true);
-  // });
 
   describe("Register user with same email", () => {
     it("should not be albe to register with same email twice", async () => {
